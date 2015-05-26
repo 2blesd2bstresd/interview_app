@@ -52,7 +52,11 @@ def index():
 @app.route('/add', methods=['POST'])
 def add():
 
+	print 'REQUEST: ', request
+
 	form = request.form
+
+	print 'FORM: ', form
 
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
@@ -62,8 +66,12 @@ def add():
 	
 	post = Post(user_id, data)
 
+	print 'FAILED TO INIT'
+
 	db.session.add(post)
 	db.session.commit()
+
+	print 'SUCCESS!'
 
 	return jsonify({'status': 200})
 
