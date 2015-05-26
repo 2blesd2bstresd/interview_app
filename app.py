@@ -62,13 +62,10 @@ def add():
 
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
-
-	print 'DATA: ', data
-	print 'USER ID: ', user_id
 	
 	post = Post(user_id, data)
 
-	print 'FAILED TO INIT'
+	print 'INIT'
 
 	db.session.add(post)
 	db.session.commit()
