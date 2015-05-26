@@ -11,7 +11,7 @@ import json
 
 import config
 
-# url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
+url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -51,6 +51,8 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add():
+
+    db = SQLAlchemy(app)
 
 	print 'START!'
 
