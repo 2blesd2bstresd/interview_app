@@ -39,10 +39,10 @@ class Post(db.Model):
 	user_id = db.Column(db.String)
 	data = db.Column(db.String)
 
-	def __init__(self, user_id, name):
+	def __init__(self, user_id, data):
 
 		user_id = self.user_id
-		name = self.name
+		data = self.data
 
 
 @app.route('/', methods=['GET'])
