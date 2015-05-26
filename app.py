@@ -63,11 +63,11 @@ def add():
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
 	
-	post = Post(user_id, data)
+	p = Post(user_id, data)
 
 	print 'INIT: ', post
 
-	db.session.add(post)
+	db.session.add(p)
 
 	print 'ADD'
 	db.session.commit()
