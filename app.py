@@ -9,15 +9,9 @@ from sqlalchemy import exc
 from datetime import datetime
 import json
 
-# import config
-
-# url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
-
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-
-print 'DATABASE: ', db
 
 # SQLAlchemy models
 class User(db.Model):
@@ -71,22 +65,10 @@ def add():
 
 	return jsonify({'status': 200})
 
-@app.route('/retrieve', methods=['GET'])
-def retrieve():
-
-	form = request.form
-
-	print 'request: ', request
-	print 'form: ', form
-
-	user_id = form.get('user_id', None)
-
-	print 'USER ID', user_id
-	print 'TYPE: ', type(user_id)
+@app.route('/retrieve/<int:user_id>', methods=['GET'])
+def retrieve(user_id):
 
 	posts = Post.query.filter_by(user_id=user_id).all()
-
-	print 'POSTS: ', posts
 
 	data = []
 
