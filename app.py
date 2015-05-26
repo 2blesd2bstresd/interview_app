@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
+print 'DATABASE: ', db
 
 # SQLAlchemy models
 class User(db.Model):
@@ -32,7 +33,7 @@ class User(db.Model):
 		self.id = id
 
 	def __repr__(self):
-		return '<POST>'
+		return '<USER>'
 
 class Post(db.Model):
 
@@ -58,10 +59,6 @@ def index():
 @app.route('/add', methods=['POST'])
 def add():
 
-	print 'START!'
-
-	print 'REQUEST: ', request
-
 	form = request.form
 
 	data = form.get('data', None)
@@ -69,14 +66,8 @@ def add():
 	
 	p = Post(user_id=user_id, data=data)
 
-	print 'INIT: ', post
-
 	db.session.add(p)
-
-	print 'ADD'
 	db.session.commit()
-
-	print 'SUCCESS!'
 
 	return jsonify({'status': 200})
 
