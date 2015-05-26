@@ -76,10 +76,14 @@ def retrieve():
 
 	form = request.form
 
-	data = form.get('data', None)
 	user_id = form.get('user_id', None)
 
+	print 'USER ID', user_id
+	print 'TYPE: ', type(user_id)
+
 	posts = Post.query.filter_by(user_id=user_id).all()
+
+	print 'POSTS: ', posts
 
 	data = []
 
