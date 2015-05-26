@@ -81,7 +81,12 @@ def retrieve():
 
 	posts = Post.query.filter_by(data=data).filter_by(user_id=user_id).all()
 
-	return jsonify({'posts': posts})
+	data = []
+
+	for p in posts:
+		data.append(p.data)
+
+	return jsonify({'posts': data})
 
 
 port = int(os.environ.get('PORT', 5000))
