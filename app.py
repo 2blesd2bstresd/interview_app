@@ -23,7 +23,7 @@ class User(db.Model):
 
 	__tablename__ = 'users'
 
-	id = db.Column(db.String, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String)
 
 	def __init__(self, name, id):
@@ -35,7 +35,7 @@ class Post(db.Model):
 
 	__tablename__ = 'posts'
 
-	id = db.Column(db.String, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.String)
 	data = db.Column(db.String)
 
@@ -52,16 +52,30 @@ def index():
 @app.route('/add', methods=['POST'])
 def add():
 
+	print 'START!'
+
+	print 'REQUEST: ', request
+
 	form = request.form
 
+	print 'FORM: ', form
+
 	data = form.get('data', None)
+	user_id = form.get('user_id', None)
+
+	print 'DATA: ', data
+	print 'USER ID: ', user_id
 	
-	post = Post(1, data)
+	post = Post(user_id, data)
+
+	print 'FAILED TO INIT'
 
 	db.session.add(post)
 	db.session.commit()
 
-	return jsonify({'status':200})
+	print 'SUCCESS!'
+
+	return jsonify({'status': 200})
 
 @app.route('/retrieve', methods=['GET'])
 def retrieve():
