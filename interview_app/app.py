@@ -55,13 +55,15 @@ def add():
 	form = request.form
 
 	data = form.get('data', None)
+	user_id = form.get('user_id', None)
 	
-	post = Post(1, data)
+
+	post = Post(user_id, data)
 
 	db.session.add(post)
 	db.session.commit()
 
-	return jsonify({'status':200})
+	return jsonify({'status': 200})
 
 @app.route('/retrieve', methods=['GET'])
 def retrieve():
