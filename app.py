@@ -79,7 +79,7 @@ def retrieve():
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
 
-	posts = db.session.query(Post).filter(data=data).filter(user_id=user_id).all()
+	posts = Post.query.filter_by(data=data).filter_by(user_id=user_id).all()
 
 	return jsonify({'posts': posts})
 
