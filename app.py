@@ -11,7 +11,7 @@ import json
 
 import config
 
-url = urlparse.urlparse('//yymrdbzqoowsqh:1bmpBpFOiKPLzweXcuX04FASwB@ec2-23-21-183-70.compute-1.amazonaws.com:5432/d7p0rp7lvl3e7b')
+# url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
 
 app = Flask(__name__)
 app.config.from_object('config')
