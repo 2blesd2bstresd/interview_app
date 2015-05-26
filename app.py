@@ -68,7 +68,7 @@ def add():
 	print 'INIT: ', post
 
 	print 'DATABASE: ', db
-	print 'SESSION: ', session
+	print 'SESSION: ', db.session
 
 	db.session.add(p)
 
