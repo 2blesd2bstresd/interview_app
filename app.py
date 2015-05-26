@@ -65,7 +65,7 @@ def add():
 
 	return jsonify({'status': 200})
 
-@app.route('/retrieve/<int:user_id>', methods=['GET'])
+@app.route('/retrieve<int:user_id>', methods=['GET'])
 def retrieve(user_id):
 
 	posts = Post.query.filter_by(user_id=user_id).all()
