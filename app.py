@@ -9,9 +9,9 @@ from sqlalchemy import exc
 from datetime import datetime
 import json
 
-import config
+# import config
 
-url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
+# url = urlparse.urlparse('//snvsvsufglzpal:-ReHAiJScBOaEUBlmqqJ8dBnQx@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d400u70sqnkvso')
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -66,9 +66,6 @@ def add():
 	p = Post(user_id, data)
 
 	print 'INIT: ', post
-
-	print 'DATABASE: ', db
-	print 'SESSION: ', db.session
 
 	db.session.add(p)
 
