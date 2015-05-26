@@ -65,9 +65,11 @@ def add():
 	
 	post = Post(user_id, data)
 
-	print 'INIT'
+	print 'INIT: ', post
 
 	db.session.add(post)
+
+	print 'ADD'
 	db.session.commit()
 
 	print 'SUCCESS!'
