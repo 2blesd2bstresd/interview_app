@@ -23,7 +23,7 @@ class User(db.Model):
 
 	__tablename__ = 'users'
 
-	id = db.Column(db.String, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String)
 
 	def __init__(self, name, id):
@@ -35,7 +35,7 @@ class Post(db.Model):
 
 	__tablename__ = 'posts'
 
-	id = db.Column(db.String, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.String)
 	data = db.Column(db.String)
 
@@ -56,8 +56,10 @@ def add():
 
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
-	
 
+	print 'DATA: ', data
+	print 'USER ID: ', user_id
+	
 	post = Post(user_id, data)
 
 	db.session.add(post)
