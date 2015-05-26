@@ -28,21 +28,27 @@ class User(db.Model):
 
 	def __init__(self, name, id):
 
-		name = self.name
-		id = self.id
+		self.name = name
+		self.id = id
+
+	def __repr__(self):
+		return '<POST>'
 
 class Post(db.Model):
 
 	__tablename__ = 'posts'
 
 	id = db.Column(db.Integer, primary_key=True)
-	user_id = db.Column(db.String)
+	user_id = db.Column(db.Integer)
 	data = db.Column(db.String)
 
 	def __init__(self, user_id, data):
 
-		user_id = self.user_id
-		data = self.data
+		self.user_id = user_id
+		self.data = data
+
+	def __repr__(self):
+		return '<POST>'
 
 
 @app.route('/', methods=['GET'])
@@ -58,12 +64,10 @@ def add():
 
 	form = request.form
 
-	print 'FORM: ', form
-
 	data = form.get('data', None)
 	user_id = form.get('user_id', None)
 	
-	p = Post(user_id, data)
+	p = Post(user_id=user_id, data=data)
 
 	print 'INIT: ', post
 
