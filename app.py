@@ -84,7 +84,7 @@ def retrieve():
 	print 'USER ID', user_id
 	print 'TYPE: ', type(user_id)
 
-	posts = Post.query.filter_by(user_id=user_id.all()
+	posts = Post.query.filter_by(user_id=user_id).all()
 
 	print 'POSTS: ', posts
 
