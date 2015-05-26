@@ -65,9 +65,10 @@ def add():
 
 	return jsonify({'status': 200})
 
-@app.route('/retrieve<int:user_id>', methods=['GET'])
-def retrieve(user_id):
+@app.route('/retrieve', methods=['GET'])
+def retrieve():
 
+	user_id = request.args.get('user_id')
 	posts = Post.query.filter_by(user_id=user_id).all()
 
 	data = []
