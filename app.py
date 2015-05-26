@@ -52,7 +52,7 @@ def index():
 @app.route('/add', methods=['POST'])
 def add():
 
-    db = SQLAlchemy(app)
+	db = SQLAlchemy(app)
 
 	print 'START!'
 
